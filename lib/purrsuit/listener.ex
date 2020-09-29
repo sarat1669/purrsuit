@@ -22,7 +22,11 @@ defmodule Purrsuit.Listener do
   end
 
   def handle_cast(:start, listeners) do
-    Application.get_env(:purrsuit, :watches)
+    {:ok, data} = File.read("/etc/purrsuit/watch.conf")
+    data
+    |> String.split("\n")
+    |> Enum.map(&(String.trim/1))
+    |> Enum.reject(&(&1 == ""))
     |> Enum.each(fn watch ->
       Task.start_link(fn ->
         {:spawn_executable, "./wrap.sh"}
