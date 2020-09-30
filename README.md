@@ -1,21 +1,19 @@
-# Purrsuit
+# purrsuit
 
-**TODO: Add description**
+🐈 purr-sue the logs
 
-## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `purrsuit` to your list of dependencies in `mix.exs`:
+#### Features
+- realtime log tail
+- decentralized
+- tail logs from across your infra directly from your terminal
 
-```elixir
-def deps do
-  [
-    {:purrsuit, "~> 0.1.0"}
-  ]
-end
-```
+#### Prerequisites
+- erlang / elixir runtime
+- network access between nodes
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/purrsuit](https://hexdocs.pm/purrsuit).
-
+#### TODO
+- [ ] deployment
+- [ ] reload config changes
+- [ ] error reporting
+- [ ] logger integration
