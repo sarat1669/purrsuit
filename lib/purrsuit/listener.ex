@@ -41,7 +41,7 @@ defmodule Purrsuit.Listener do
   def handle_cast({:data, data}, listeners) do
     listeners
     |> Enum.each(fn pid ->
-      send(pid, {:data, data})
+      send(pid, {:data, Node.self, data})
     end)
     {:noreply, listeners}
   end
