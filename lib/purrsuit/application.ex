@@ -12,6 +12,8 @@ defmodule Purrsuit.Application do
     |> String.to_atom
     |> Node.start
 
+    Node.set_cookie(:purrsuit)
+
     children = [ Listener ]
     opts = [strategy: :one_for_one, name: Purrsuit.Supervisor]
 

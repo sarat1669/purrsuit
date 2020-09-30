@@ -24,9 +24,17 @@ defmodule Mix.Tasks.System.Start do
   def run(_args) do
     :net_kernel.monitor_nodes(true)
 
-    "node" <> (:rand.uniform(1000) |> Integer.to_string) <> "@127.0.0.1"
+    ip = "echo $(hostname -I | awk '{print $1}')"
+    |> String.to_charlist
+    |> :os.cmd()
+    |> List.to_string
+    |> String.trim
+
+    "node" <> (:rand.uniform(1000) |> Integer.to_string) <> "@" <> ip
     |> String.to_atom
     |> Node.start
+
+    Node.set_cookie(:purrsuit)
 
     {:ok, data} = File.read("/etc/purrsuit/nodes.conf")
 
